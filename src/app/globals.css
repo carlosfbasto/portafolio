@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
+/* El diseño usa un contenido principal claro, por lo que no se cambia a modo oscuro. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;
+  --foreground: #0f172a;
 }
 
 @theme inline {
@@ -12,15 +13,25 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Deja espacio al saltar a una sección; en móvil y tablet incluye la barra de secciones fija. */
+section[id] {
+  scroll-margin-top: 4.5rem;
+}
+
+@media (min-width: 64rem) {
+  section[id] {
+    scroll-margin-top: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
