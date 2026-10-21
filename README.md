@@ -90,7 +90,7 @@ Toda la información vive en `src/data/` y sigue los tipos de `src/types/cv.ts`;
 | Experiencia laboral | `src/data/experience.ts` | Confirmado |
 | Formación académica | `src/data/education.ts` | Confirmado |
 | CV en PDF | `src/components/cv/CvDocument.tsx` | Generado al hacer clic a partir de `src/data/` |
-| Repositorio del portafolio | `src/data/projects.ts` | **Pendiente**: aún no hay remoto en GitHub |
+| Repositorio del portafolio | `src/data/projects.ts` | Confirmado: [github.com/carlosfbasto/portafolio](https://github.com/carlosfbasto/portafolio) (público) |
 
 Notas de verificación:
 
@@ -100,4 +100,4 @@ Notas de verificación:
 
 ## Despliegue
 
-Pensado para desplegarse en [Vercel](https://vercel.com/): importa el repositorio de GitHub y Vercel detectará Next.js y pnpm automáticamente. No requiere variables de entorno.
+Repositorio: https://github.com/carlosfbasto/portafolio. Pensado para desplegarse en [Vercel](https://vercel.com/): importa el repositorio de GitHub y Vercel detectará Next.js y pnpm automáticamente. No requiere variables de entorno.

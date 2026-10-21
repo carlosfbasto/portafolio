@@ -46,6 +46,8 @@ export const projects: Project[] = [
       "Renderizado estático con componentes de servidor.",
     ],
     stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    links: [],
+    links: [
+      { label: "Repositorio", href: "https://github.com/carlosfbasto/portafolio" },
+    ],
   },
 ];
