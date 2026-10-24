@@ -6,7 +6,7 @@ type SocialLinkProps = {
   link: SocialLinkData;
   /**
    * `sidebar`: botón redondo solo con ícono en móvil y con texto en escritorio.
-   * `light`: ícono y texto sobre fondo claro.
+   * `light`: pastilla con ícono y texto en el contenido principal.
    */
   variant?: "sidebar" | "light";
 };
@@ -14,13 +14,13 @@ type SocialLinkProps = {
 const variants = {
   sidebar: {
     active:
-      "size-11 justify-center rounded-full bg-slate-800 text-slate-200 hover:bg-blue-600 hover:text-white lg:size-auto lg:justify-start lg:rounded-md lg:bg-transparent lg:px-3 lg:py-1.5 lg:text-slate-300 lg:hover:bg-slate-800",
-    pending: "text-slate-500",
+      "size-11 justify-center rounded-full bg-surface-2 text-muted hover:bg-primary hover:text-on-primary lg:size-auto lg:justify-start lg:rounded-lg lg:bg-transparent lg:px-3 lg:py-2 lg:hover:bg-surface-2 lg:hover:text-fg",
+    pending: "text-subtle",
     label: "sr-only lg:not-sr-only",
   },
   light: {
-    active: "rounded text-slate-700 hover:text-blue-700",
-    pending: "text-slate-400",
+    active: "card card-hover rounded-full px-4 py-2 font-medium text-fg hover:text-primary",
+    pending: "rounded-full border border-dashed border-line px-4 py-2 text-subtle",
     label: "",
   },
 };
@@ -34,7 +34,7 @@ export function SocialLink({ link, variant = "light" }: SocialLinkProps) {
     return (
       <span className={`${base} ${v.pending}`}>
         <SocialIcon platform={link.platform} />
-        {link.label} <span className="text-xs">(pendiente)</span>
+        {link.label} <span className="font-mono text-xs">(pendiente)</span>
       </span>
     );
   }
@@ -42,7 +42,7 @@ export function SocialLink({ link, variant = "light" }: SocialLinkProps) {
   return (
     <a
       href={link.href}
-      className={`${base} transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 ${v.active}`}
+      className={`${base} transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${v.active}`}
       {...externalLinkProps(link.href)}
     >
       <SocialIcon platform={link.platform} />

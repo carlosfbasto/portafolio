@@ -1,22 +1,268 @@
 @import "tailwindcss";
 
-/* El diseño usa un contenido principal claro, por lo que no se cambia a modo oscuro. */
-:root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+/*
+ * Tres temas visuales (DESIGN.md "Aether & Code"): oscuro, claro y liquid glass.
+ * El tema activo se indica con `data-theme` en <html>. Sin preferencia guardada,
+ * se usa el esquema de color del sistema (ver ThemeScript).
+ */
+@custom-variant glass (&:where([data-theme="glass"], [data-theme="glass"] *));
+
+/* Oscuro (también el valor por defecto si no hay JavaScript). */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #090d16;
+  --surface: #0f172a;
+  --surface-2: #1e293b;
+  --fg: #f8fafc;
+  --muted: #94a3b8;
+  --subtle: #64748b;
+  --line: rgb(255 255 255 / 0.08);
+  --primary: #00f0ff;
+  --on-primary: #00363a;
+  --secondary: #a78bfa;
+  --tertiary: #34d399;
+  --warn: #fbbf24;
+  --danger: #ffb4ab;
+
+  --btn-bg: #00f0ff;
+  --btn-fg: #00363a;
+  --btn-glow: 0 0 24px -2px rgb(0 240 255 / 0.55);
+
+  --panel-bg: #0b1120;
+  --panel-blur: none;
+  --panel-shadow: none;
+
+  --card-bg: #0f172a;
+  --card-blur: none;
+  --card-shadow: none;
+  --card-hover-shadow: 0 8px 32px -4px rgb(0 240 255 / 0.12), 0 0 0 1px rgb(0 240 255 / 0.3);
+  --card-hover-border: rgb(0 240 255 / 0.3);
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --canvas: #f8fafc;
+  --surface: #ffffff;
+  --surface-2: #f1f5f9;
+  --fg: #0f172a;
+  --muted: #475569;
+  --subtle: #64748b;
+  --line: #e2e8f0;
+  --primary: #0284c7;
+  --on-primary: #ffffff;
+  --secondary: #7c3aed;
+  --tertiary: #059669;
+  --warn: #b45309;
+  --danger: #b91c1c;
+
+  --btn-bg: #0f172a;
+  --btn-fg: #ffffff;
+  --btn-glow: 0 4px 16px -2px rgb(2 132 199 / 0.35);
+
+  --panel-bg: #ffffff;
+  --panel-blur: none;
+  --panel-shadow: none;
+
+  --card-bg: #ffffff;
+  --card-blur: none;
+  --card-shadow: none;
+  --card-hover-shadow: 0 4px 12px rgb(15 23 42 / 0.06);
+  --card-hover-border: rgb(2 132 199 / 0.45);
+}
+
+/* Liquid glass sobre un fondo oscuro con gradientes en movimiento. */
+[data-theme="glass"] {
+  color-scheme: dark;
+  --canvas: #070b18;
+  --surface: rgb(255 255 255 / 0.07);
+  --surface-2: rgb(255 255 255 / 0.12);
+  --fg: #f8fafc;
+  --muted: #b4c0d4;
+  --subtle: #8a98b0;
+  --line: rgb(255 255 255 / 0.16);
+  --primary: #5ff6ff;
+  --on-primary: #00363a;
+  --secondary: #c4b5fd;
+  --tertiary: #6ee7b7;
+  --warn: #fcd34d;
+  --danger: #ffb4ab;
+
+  --btn-bg: rgb(255 255 255 / 0.14);
+  --btn-fg: #f8fafc;
+  --btn-glow: inset 0 1px 1px 0 rgb(255 255 255 / 0.3), 0 8px 24px -6px rgb(95 246 255 / 0.45);
+
+  --panel-bg: rgb(255 255 255 / 0.06);
+  --panel-blur: blur(24px) saturate(190%);
+  --panel-shadow: inset -1px 0 0 0 rgb(255 255 255 / 0.12);
+
+  --card-bg: rgb(255 255 255 / 0.07);
+  --card-blur: blur(24px) saturate(190%);
+  --card-shadow: inset 0 1px 1px 0 rgb(255 255 255 / 0.25), 0 16px 40px -8px rgb(0 0 0 / 0.25);
+  --card-hover-shadow: inset 0 1px 1px 0 rgb(255 255 255 / 0.3), 0 20px 48px -8px rgb(0 0 0 / 0.35);
+  --card-hover-border: rgb(255 255 255 / 0.32);
+}
+
+/* Sin elección guardada y sin JavaScript: respeta el sistema. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+    --canvas: #f8fafc;
+    --surface: #ffffff;
+    --surface-2: #f1f5f9;
+    --fg: #0f172a;
+    --muted: #475569;
+    --subtle: #64748b;
+    --line: #e2e8f0;
+    --primary: #0284c7;
+    --on-primary: #ffffff;
+    --secondary: #7c3aed;
+    --tertiary: #059669;
+    --warn: #b45309;
+    --danger: #b91c1c;
+    --btn-bg: #0f172a;
+    --btn-fg: #ffffff;
+    --btn-glow: 0 4px 16px -2px rgb(2 132 199 / 0.35);
+    --panel-bg: #ffffff;
+    --card-bg: #ffffff;
+    --card-hover-shadow: 0 4px 12px rgb(15 23 42 / 0.06);
+    --card-hover-border: rgb(2 132 199 / 0.45);
+  }
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-line: var(--line);
+  --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
+  --color-secondary: var(--secondary);
+  --color-tertiary: var(--tertiary);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-jakarta);
+  --font-mono: var(--font-jetbrains);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--canvas);
+  color: var(--fg);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), var(--font-sans), sans-serif;
+  }
+}
+
+/* Contenedor de tarjeta: borde, fondo, sombra y desenfoque según el tema. */
+@utility card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--line);
+  box-shadow: var(--card-shadow);
+  -webkit-backdrop-filter: var(--card-blur);
+  backdrop-filter: var(--card-blur);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease,
+    background-color 0.3s ease;
+}
+
+/* Elevación al pasar el cursor; combinar con `card`. */
+@utility card-hover {
+  &:hover {
+    border-color: var(--card-hover-border);
+    box-shadow: var(--card-hover-shadow);
+  }
+}
+
+/* Panel lateral y barra de secciones. */
+@utility panel {
+  background-color: var(--panel-bg);
+  box-shadow: var(--panel-shadow);
+  -webkit-backdrop-filter: var(--panel-blur);
+  backdrop-filter: var(--panel-blur);
+}
+
+/* Botón principal: relleno sólido (oscuro/claro) o translúcido (glass). */
+@utility btn-primary {
+  background-color: var(--btn-bg);
+  color: var(--btn-fg);
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s ease,
+    background-color 0.3s ease;
+  &:hover {
+    box-shadow: var(--btn-glow);
+  }
+}
+
+/* Micro-cuadrícula decorativa de las tarjetas de proyecto. */
+@utility micro-grid {
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Fondo animado del tema glass. */
+.glass-backdrop {
+  display: none;
+}
+
+[data-theme="glass"] .glass-backdrop {
+  display: block;
+}
+
+.glass-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.55;
+  animation: glass-drift 26s ease-in-out infinite alternate;
+}
+
+@keyframes glass-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(6vw, -4vh, 0) scale(1.12);
+  }
+  100% {
+    transform: translate3d(-4vw, 5vh, 0) scale(0.95);
+  }
+}
+
+/* Nodo pulsante de la línea de tiempo para puestos actuales. */
+@keyframes node-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--primary) 60%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 10px color-mix(in srgb, var(--primary) 0%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--primary) 0%, transparent);
+  }
+}
+
+.node-pulse {
+  animation: node-pulse 2s ease-out infinite;
 }
 
 /* Deja espacio al saltar a una sección; en móvil y tablet incluye la barra de secciones fija. */
@@ -33,5 +279,10 @@ section[id] {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .glass-blob,
+  .node-pulse {
+    animation: none;
   }
 }

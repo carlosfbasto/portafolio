@@ -1,6 +1,9 @@
 import { SectionTitle } from "@/components/ui/SectionTitle";
-import { SkillBadge } from "@/components/ui/SkillBadge";
+import { SkillBadge, type SkillTone } from "@/components/ui/SkillBadge";
 import { skillGroups } from "@/data/skills";
+
+// Tono por grupo, en el orden de `src/data/skills.ts`: Frontend, Backend y datos, Herramientas.
+const tones: SkillTone[] = ["primary", "tertiary", "secondary"];
 
 export function Skills() {
   return (
@@ -11,14 +14,19 @@ export function Skills() {
         description="Tecnologías y herramientas que he utilizado en mis proyectos."
       />
       <div className="space-y-8">
-        {skillGroups.map((group) => (
+        {skillGroups.map((group, index) => (
           <div key={group.name}>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500">
+            <h3 className="font-mono text-[11px] font-semibold uppercase tracking-[0.06em] text-subtle">
               {group.name}
             </h3>
-            <ul className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
+            <ul className="mt-3 flex flex-wrap gap-2.5">
               {group.skills.map((skill) => (
-                <SkillBadge key={skill} name={skill} variant="tile" />
+                <SkillBadge
+                  key={skill}
+                  name={skill}
+                  variant="tile"
+                  tone={tones[index % tones.length]}
+                />
               ))}
             </ul>
           </div>

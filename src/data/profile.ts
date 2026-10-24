@@ -45,6 +45,11 @@ export const profile: Profile = {
       label: "Correo electrónico",
       href: "mailto:Carlosbatun607@gmail.com",
     },
+    {
+      platform: "whatsapp",
+      label: "+52 990 207 9132",
+      href: "https://wa.me/529902079132",
+    },
   ],
   provisional: {
     location: false,

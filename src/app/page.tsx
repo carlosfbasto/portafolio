@@ -14,14 +14,14 @@ export default function Home() {
     <>
       <a
         href="#contenido"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-blue-700 focus:shadow"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-surface focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary focus:shadow"
       >
         Saltar al contenido
       </a>
       <Header />
       <div className="flex min-h-screen flex-col lg:pl-80">
         <main id="contenido" className="flex-1">
-          <Container className="divide-y divide-slate-200 pb-12">
+          <Container className="divide-y divide-line pb-12">
             <Hero />
             <About />
             <Projects />
