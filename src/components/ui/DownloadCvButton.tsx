@@ -54,12 +54,12 @@ export function DownloadCvButton({ fileName }: DownloadCvButtonProps) {
         onClick={handleClick}
         disabled={loading}
         aria-busy={loading}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-blue-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400 disabled:cursor-wait disabled:opacity-70"
+        className="inline-flex w-full items-center justify-center gap-2 btn-primary rounded-lg px-4 py-2.5 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary glass:border glass:border-white/20 disabled:cursor-wait disabled:opacity-70"
       >
         <DownloadIcon />
         {loading ? "Generando PDF…" : "Descargar CV (PDF)"}
       </button>
-      <p role="status" className="mt-2 text-xs text-red-300">
+      <p role="status" className="mt-2 text-xs text-danger">
         {status === "error" ? "No se pudo generar el PDF. Inténtalo de nuevo." : ""}
       </p>
     </div>

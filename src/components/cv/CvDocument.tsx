@@ -161,7 +161,9 @@ export function CvDocument({ baseUrl }: CvDocumentProps) {
           {profile.location ? <Text style={styles.sidebarText}>{profile.location}</Text> : null}
           {contacts.map((link) => (
             <Link key={link.platform} src={link.href ?? ""} style={styles.sidebarLink}>
-              {(link.href ?? "").replace(/^mailto:/, "").replace(/^https?:\/\//, "")}
+              {link.platform === "whatsapp"
+                ? link.label
+                : (link.href ?? "").replace(/^mailto:/, "").replace(/^https?:\/\//, "")}
             </Link>
           ))}
 

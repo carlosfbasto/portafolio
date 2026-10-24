@@ -6,7 +6,7 @@ export type Provisional = {
   provisional?: boolean;
 };
 
-export type SocialPlatform = "github" | "linkedin" | "email" | "website";
+export type SocialPlatform = "github" | "linkedin" | "email" | "whatsapp" | "website";
 
 export type SocialLinkData = Provisional & {
   platform: SocialPlatform;
@@ -61,8 +61,18 @@ export type ExperienceItem = Provisional & {
   highlights: string[];
 };
 
+/** Insignia o certificado obtenido, dentro de `public/`. */
+export type Badge = {
+  src: string;
+  alt: string;
+  /** Tamaño original en píxeles, para conservar la proporción. */
+  width: number;
+  height: number;
+};
+
 export type EducationItem = Provisional & {
   logo?: OrganizationLogo;
+  badge?: Badge;
   title: string;
   institution: string;
   period: string;

@@ -2,7 +2,7 @@ import { NavIcon } from "@/components/ui/NavIcon";
 import { navigation } from "@/data/navigation";
 
 type SectionNavProps = {
-  /** `sidebar`: lista vertical del panel en escritorio. `bar`: barra fija con scroll horizontal en móvil y tablet. */
+  /** `sidebar`: lista vertical del panel en escritorio. `bar`: lista con scroll horizontal en móvil y tablet. */
   variant: "sidebar" | "bar";
 };
 
@@ -10,14 +10,14 @@ const styles = {
   sidebar: {
     nav: "hidden lg:block",
     list: "flex flex-col gap-1",
-    link: "flex items-center gap-3 rounded-md px-3 py-2 text-sm text-slate-300 transition-colors hover:bg-slate-800 hover:text-white focus-visible:outline-2 focus-visible:outline-blue-400",
-    icon: "size-4 shrink-0 text-blue-400",
+    link: "group flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:bg-surface-2 hover:text-fg focus-visible:outline-2 focus-visible:outline-primary",
+    icon: "size-4 shrink-0 text-subtle transition-colors group-hover:text-primary",
   },
   bar: {
-    nav: "sticky top-0 z-30 border-b border-slate-800 bg-slate-900/95 backdrop-blur lg:hidden",
+    nav: "min-w-0 flex-1",
     list: "flex gap-2 overflow-x-auto px-4 py-2.5 sm:justify-center sm:px-10",
-    link: "flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-700 px-3.5 py-1.5 text-sm text-slate-200 transition-colors hover:border-blue-400 hover:text-white focus-visible:outline-2 focus-visible:outline-blue-400",
-    icon: "size-4 shrink-0 text-blue-400",
+    link: "flex items-center gap-2 whitespace-nowrap rounded-full border border-line px-3.5 py-1.5 text-sm text-muted transition-colors hover:border-primary hover:text-fg focus-visible:outline-2 focus-visible:outline-primary",
+    icon: "size-4 shrink-0 text-primary",
   },
 };
 

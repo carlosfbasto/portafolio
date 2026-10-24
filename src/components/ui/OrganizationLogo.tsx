@@ -6,8 +6,8 @@ type OrganizationLogoProps = {
 };
 
 const backgrounds = {
-  light: "bg-white ring-1 ring-slate-200",
-  dark: "bg-slate-900",
+  light: "bg-white ring-1 ring-line",
+  dark: "bg-slate-900 ring-1 ring-white/10",
 };
 
 /**

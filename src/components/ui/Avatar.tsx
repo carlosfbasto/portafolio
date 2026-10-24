@@ -14,7 +14,7 @@ export function Avatar({ name, photo }: AvatarProps) {
   if (!photo) {
     return (
       <div
-        className={`${base} flex items-center justify-center bg-blue-600 text-3xl font-semibold text-white`}
+        className={`${base} flex items-center justify-center bg-primary font-display text-3xl font-bold text-on-primary shadow-[0_0_32px_-4px] shadow-primary/50`}
         aria-hidden="true"
       >
         {getInitials(name)}
@@ -30,7 +30,7 @@ export function Avatar({ name, photo }: AvatarProps) {
       height={224}
       sizes="(min-width: 1024px) 112px, 96px"
       preload
-      className={`${base} object-cover ring-2 ring-blue-500 ring-offset-2 ring-offset-slate-900`}
+      className={`${base} object-cover ring-2 ring-primary/70 ring-offset-4 ring-offset-transparent shadow-[0_0_32px_-4px] shadow-primary/50`}
     />
   );
 }

@@ -15,11 +15,14 @@ type StrengthCardProps = {
 /** Tarjeta de "Qué puedo aportar". Debe renderizarse dentro de una lista (`ul`). */
 export function StrengthCard({ strength }: StrengthCardProps) {
   return (
-    <li className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-blue-300 hover:shadow-md motion-safe:hover:-translate-y-0.5">
-      <span className="absolute inset-y-0 left-0 w-1 bg-blue-600" aria-hidden="true" />
+    <li className="card card-hover group relative overflow-hidden rounded-2xl p-5 motion-safe:hover:-translate-y-0.5">
+      <span
+        className="absolute inset-y-0 left-0 w-0.5 bg-gradient-to-b from-primary to-secondary"
+        aria-hidden="true"
+      />
       <div className="flex items-start gap-4">
         <span
-          className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-700 ring-1 ring-blue-100 transition-colors group-hover:bg-blue-600 group-hover:text-white"
+          className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary ring-1 ring-primary/20 transition-colors group-hover:bg-primary group-hover:text-on-primary"
           aria-hidden="true"
         >
           <svg
@@ -34,7 +37,7 @@ export function StrengthCard({ strength }: StrengthCardProps) {
             <path d={icons[strength.icon]} />
           </svg>
         </span>
-        <p className="text-sm leading-relaxed text-slate-700">{strength.text}</p>
+        <p className="text-sm leading-relaxed text-muted">{strength.text}</p>
       </div>
     </li>
   );

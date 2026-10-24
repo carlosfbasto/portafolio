@@ -44,9 +44,16 @@ export type TechIconData = {
   path: string;
   /** Color de marca en formato `#RRGGBB`. */
   color: string;
+  /** El color de marca es casi negro y no se distinguiría sobre fondos oscuros. */
+  isDark: boolean;
 };
+
+function isDarkHex(hex: string) {
+  const [r, g, b] = [0, 2, 4].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255);
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b < 0.25;
+}
 
 export function getTechIcon(name: string): TechIconData | null {
   const icon = icons[name];
-  return icon ? { path: icon.path, color: `#${icon.hex}` } : null;
+  return icon ? { path: icon.path, color: `#${icon.hex}`, isDark: isDarkHex(icon.hex) } : null;
 }
